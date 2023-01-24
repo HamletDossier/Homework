@@ -30,14 +30,27 @@ const App = () =>{
   const clearCompleted = () =>{
     setTodos(todos.filter((todo)=> !todo.completed));
   }
+  const [filter,setFilter] = useState("all");
+  const filteresdTodos = () =>{
+    switch(filter){
+      case "all":
+        return todos;
+      case "active":
+        return todos.filter((todo)=> !todo.completed);
+      case "completed":
+        return todos.filter((todo)=> todo.completed);
+      default:
+        return todos;
+    }
+  }
   return (
     <div className="bg-[url('./assets/images/bg-mobile-light.jpg')] bg-contain bg-no-repeat bg-gray-300 min-h-screen">
       <Header />
       <main className="container mx-auto px-4 mt-8">
         <TodoCreate createTodo={createTodo}/>
-        <TodoList todos={todos} removeTodo={removeTodo} updateTodo={updateTodo}/>
+        <TodoList todos={filteresdTodos()} removeTodo={removeTodo} updateTodo={updateTodo}/>
         <TodoComputed computedItemsLeft={computedItemsLeft} clearCompleted={clearCompleted}/>
-        <TodoFilter />
+        <TodoFilter setFilter={setFilter} filter={filter}/>
       </main>
       <footer className="text-center mt-8">Drag and drop to reorder list</footer>
     </div>
