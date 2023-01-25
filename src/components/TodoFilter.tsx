@@ -1,4 +1,4 @@
-const TodoComputed = ({setFilter,filter}) => {
+const TodoComputed = ({setFilter,filter}:{setFilter:any, filter:string}) => {
   return (
     <section className="container mx-auto mt-8">
       <div className="bg-white p-4 rounded-md flex justify-center gap-4">

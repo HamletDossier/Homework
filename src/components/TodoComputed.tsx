@@ -1,9 +1,14 @@
-const TodoComputed = ({computedItemsLeft,clearCompleted}) => {
+import { TodoStore } from "../domain/TodoStore";
+
+const TodoComputed = (
+  {countCompletedTodo,clearCompletedTodo}:
+  {countCompletedTodo:number,clearCompletedTodo:VoidFunction}
+  ) => {
   return (
     <section className="py-4 px-4 flex justify-between bg-white rounded-b-md">
-      <span className=" text-gray-400">{computedItemsLeft} items left</span>
+      <span className="text-gray-400"> {countCompletedTodo} items left</span>
       <button
-      onClick={() => clearCompleted()}
+      onClick={() => clearCompletedTodo()}
       className="text-gray-400">Clear Completed</button>
     </section>
     );

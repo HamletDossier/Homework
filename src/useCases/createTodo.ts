@@ -14,5 +14,5 @@ class createTodoUserCase implements createTodoStore {
 
 } 
 
-export default createTodoUserCase
+export default createTodoUserCase;
 

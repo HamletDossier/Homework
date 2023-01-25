@@ -1,6 +1,8 @@
+import { TodoEntity } from "../domain/TodoEntity";
+import { TodoStore } from "../domain/TodoStore";
 import TodoItem from "./TodoItem";
 
-const TodoList = ({todos, removeTodo, updateTodo}) => {
+const TodoList = ({todos, removeTodo, updateTodo}:{todos:TodoEntity[],removeTodo:any,updateTodo:any}) => {
   return (
   <div className="bg-white rounded-t-md [&>article]:p-4 mt-8">
    {todos.map((todo)=> (

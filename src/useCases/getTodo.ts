@@ -9,7 +9,7 @@ class getTodoUserCase implements getTodoStore {
 
     constructor(public readonly todos: TodoEntity[]){}
 
-    getTodo(name:FilterEntity["name"] = "All"): TodoEntity[] {
+    getTodo(name:FilterEntity["name"]): TodoEntity[] {
         return getTodo(this.todos,name);
     }
 } 

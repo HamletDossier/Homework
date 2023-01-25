@@ -1,7 +1,9 @@
+import { TodoEntity } from "../domain/TodoEntity";
+import { TodoStore } from "../domain/TodoStore";
 import CheckIcon from "./icons/CheckIcon";
 import CrossIcon from "./icons/CrossIcon";
 
-const TodoItem = ({todo,removeTodo,updateTodo}) => {
+const TodoItem = ({todo,removeTodo,updateTodo}:{todo:TodoEntity,removeTodo:TodoStore["removeTodo"],updateTodo:TodoStore["updateTodo"]}) => {
   const {id,title,completed} = todo;
   return (
     <article className="flex gap-4 border-b border-b-gray-400">

@@ -24,7 +24,13 @@ const getTodo = (todos:TodoEntity[],name:FilterEntity['name']) => {
     return todos;
 } 
 
+// It can count numbers completed todo
+const countCompletedTodo = (todos:TodoEntity[]) => todos.filter((todo) => !todo.completed).length;
+
+// It can clear all the completed todo 
+const clearCompletedTodo = (todos:TodoEntity[]) => todos.filter((todo) => !todo.completed);
 
 
 
-export {createTodo,removeTodo,updateTodo,getTodo};
+
+export {createTodo,removeTodo,updateTodo,getTodo,clearCompletedTodo,countCompletedTodo};

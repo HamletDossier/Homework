@@ -1,15 +1,16 @@
 import { useState } from "react";
+import { TodoStore } from "../domain/TodoStore";
 
-const TodoCreate = ({createTodo}) => {
-  const [title,setTitle] = useState('');
+const TodoCreate = ({createTodo}:{createTodo:any}) => {
+  const [title,setTitle] = useState<string>("");
 
-const handleSubmitAddTodo = (e:any)=>{
-  e.preventDefault();
-  if(!title.trim())
-    return setTitle("");
-  createTodo(title);
-  setTitle("");
-}
+  const handleSubmitAddTodo = (e:any)=>{
+    e.preventDefault();
+    if(!title.trim())
+      return setTitle("");
+    createTodo(title);
+    setTitle("");
+  }
 
   return (
     <form onSubmit={handleSubmitAddTodo} className="bg-white rounded-md overflow-hidden py-4 flex gap-4 items-center px-4">

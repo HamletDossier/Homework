@@ -11,7 +11,8 @@ interface TodoStore {
     updateTodo(id:TodoEntity["id"]):TodoEntity[];
     removeTodo(id:TodoEntity["id"]):TodoEntity[];
     getTodo(name:FilterEntity["name"]):TodoEntity[];
-
+    countCompletedTodo():number;
+    clearCompletedTodo():TodoEntity[];
 }
 
 export type {TodoStore};
