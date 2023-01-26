@@ -1,21 +1,20 @@
- 
- interface ThemeEntity{
-    //Actions
-    addThemeDark():void
-    addThemeLight():void;
- }
-export default class ThemeControlllers implements ThemeEntity{
+import { useEffect, useState } from "react";
 
-    addThemeDark(): void {
-        // Whenever the user explicitly chooses light mode
-        localStorage.theme = 'light'
-    }
-    addThemeLight(): void {
-        // Whenever the user explicitly chooses dark mode
-        localStorage.theme = 'dark' 
-    }
+export default function themeControllers(){
+    
+    const initialStateDarkMode:boolean = localStorage.getItem('theme') === 'dark';
+    const [darkMode,setDarkMode] = useState<boolean>(initialStateDarkMode);
+    
+    useEffect(()=>{
+       if(darkMode){
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('theme','dark');
+    }else{
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme','light');
+        }
+    },[darkMode]);
 
+    return {darkMode,setDarkMode};
 
- }
-  
- 
+}
