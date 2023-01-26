@@ -10,7 +10,7 @@ const App = () =>{
   const {getTodo,createTodo,removeTodo,updateTodo,todos,clearCompletedTodo,countCompletedTodo,filter,setFilter} = TodoControllers();
   
   return (
-    <div className="bg-[url('./assets/images/bg-mobile-light.jpg')] dark:bg-[url('./assets/images/bg-mobile-dark.jpg')] bg-contain bg-no-repeat bg-gray-300 min-h-screen dark:bg-gray-900">
+    <div className="transition-all duration-1000 bg-[url('./assets/images/bg-mobile-light.jpg')] dark:bg-[url('./assets/images/bg-mobile-dark.jpg')] bg-contain bg-no-repeat bg-gray-300 min-h-screen dark:bg-gray-900">
       <Header />
       <main className="container mx-auto px-4 mt-8">
         <TodoCreate createTodo={createTodo}/>
