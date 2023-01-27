@@ -10,9 +10,9 @@ const App = () =>{
   const {getTodo,createTodo,removeTodo,updateTodo,todos,clearCompletedTodo,countCompletedTodo,filter,setFilter} = TodoControllers();
   
   return (
-    <div className="transition-all duration-1000 bg-[url('./assets/images/bg-mobile-light.jpg')] dark:bg-[url('./assets/images/bg-mobile-dark.jpg')] bg-contain bg-no-repeat bg-gray-300 min-h-screen dark:bg-gray-900">
+    <div className="transition-all duration-1000 dark:md:bg-[url('./assets/images/bg-desktop-dark.jpg')] md:bg-[url('./assets/images/bg-desktop-light.jpg')] bg-[url('./assets/images/bg-mobile-light.jpg')] dark:bg-[url('./assets/images/bg-mobile-dark.jpg')] bg-contain bg-no-repeat bg-gray-300 min-h-screen dark:bg-gray-900">
       <Header />
-      <main className="container mx-auto px-4 mt-8">
+      <main className="container mx-auto px-4 mt-8 md:max-w-xl">
         <TodoCreate createTodo={createTodo}/>
         <TodoList todos={getTodo()} removeTodo={removeTodo} updateTodo={updateTodo}/>
         <TodoComputed countCompletedTodo={countCompletedTodo()} clearCompletedTodo={clearCompletedTodo}/>
