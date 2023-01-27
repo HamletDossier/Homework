@@ -16,7 +16,6 @@ const App = () =>{
         <TodoCreate createTodo={createTodo}/>
         {/* Add Drag and Drop */}
         <DragDropContext onDragEnd={handleDragEnd}>
-
           <TodoList todos={getTodo()} removeTodo={removeTodo} updateTodo={updateTodo}/>
         </DragDropContext>
         {/* End Drag and Drop */}
