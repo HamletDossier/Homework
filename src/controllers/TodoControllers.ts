@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import initialStateTodos from "../data/initialStateTodos";
 import { FilterEntity } from "../domain/FilterEntity";
 import { TodoEntity } from "../domain/TodoEntity";
@@ -10,7 +10,7 @@ import removeTodoUserCase from "../useCases/removeTodo";
 import updateTodoUserCase from "../useCases/updateTodo";
 
 export default function TodoControllers(){
-    const [todos, setTodos] = useState<TodoEntity[]>(initialStateTodos);
+    const [todos, setTodos] = useState<TodoEntity[]>(initialStateTodos || []);
     const [filter, setFilter] = useState<string>("all");
 
 
@@ -31,10 +31,22 @@ export default function TodoControllers(){
         setTodos(new clearCompletedTodoUserCase(todos).clearCompletedTodo());
     }
     function countCompletedTodo(){
-        return new countCompletedTodoUserCase(todos).countCompletedTodo();
+        return new countCompletedTodoUserCase(todos).countCompletedTodo()
     }
 
-    return {getTodo,createTodo,removeTodo,updateTodo,todos,clearCompletedTodo,countCompletedTodo,filter,setFilter}
+    useEffect(()=>{
+        localStorage.setItem("todos", JSON.stringify(todos));
+    },[todos]);
+
+    return {getTodo,
+        createTodo,
+        removeTodo,
+        updateTodo,
+        todos,
+        clearCompletedTodo,
+        countCompletedTodo,
+        filter,
+        setFilter}
 
    
 }
