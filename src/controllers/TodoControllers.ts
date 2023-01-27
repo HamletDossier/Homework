@@ -34,6 +34,31 @@ export default function TodoControllers(){
         return new countCompletedTodoUserCase(todos).countCompletedTodo()
     }
 
+    const reorder = (list, startIndex, endIndex) =>{
+        const result = [...list];
+        const [removed] = result.splice(startIndex,1);
+        result.splice(endIndex, 0, removed);
+        console.log('hola');
+        
+        return result;
+    }
+
+    const handleDragEnd = (result:any) =>{
+        const { destination, source } = result;
+        if(!destination) return;
+        if(
+            source.index === destination.index &&
+            source.droppableId == destination.droppableId
+        )
+            return;
+        setTodos((prev) => 
+            reorder(prev, source.index, destination.index)
+        );
+          return ;
+        
+        
+      }
+
     useEffect(()=>{
         localStorage.setItem("todos", JSON.stringify(todos));
     },[todos]);
@@ -46,7 +71,8 @@ export default function TodoControllers(){
         clearCompletedTodo,
         countCompletedTodo,
         filter,
-        setFilter}
+        setFilter,
+        handleDragEnd}
 
    
 }

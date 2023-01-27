@@ -1,12 +1,13 @@
+import React from "react";
 import { TodoEntity } from "../domain/TodoEntity";
 import { TodoStore } from "../domain/TodoStore";
 import CheckIcon from "./icons/CheckIcon";
 import CrossIcon from "./icons/CrossIcon";
 
-const TodoItem = ({todo,removeTodo,updateTodo}:{todo:TodoEntity,removeTodo:TodoStore["removeTodo"],updateTodo:TodoStore["updateTodo"]}) => {
+const TodoItem = React.forwardRef(({todo,removeTodo,updateTodo, ...props}:{todo:TodoEntity,removeTodo:TodoStore["removeTodo"],updateTodo:TodoStore["updateTodo"]},ref:any) => {
   const {id,title,completed} = todo;
   return (
-    <article className="flex gap-4 border-b border-b-gray-400 dark:bg-gray-800 transition-all duration-1000">
+    <article {...props} ref={ref} className="flex gap-4 border-b border-b-gray-400 dark:bg-gray-800 transition-all duration-1000">
         <button
         onClick={() => updateTodo(id)}
         className={`rounded-full border-2 h-5 w-5 flex-none 
@@ -26,5 +27,5 @@ const TodoItem = ({todo,removeTodo,updateTodo}:{todo:TodoEntity,removeTodo:TodoS
 
     </article>
     );
-}
+})
 export default TodoItem
