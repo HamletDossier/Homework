@@ -7,7 +7,7 @@ import CrossIcon from "./icons/CrossIcon";
 const TodoItem = React.forwardRef(({todo,removeTodo,updateTodo, ...props}:{todo:TodoEntity,removeTodo:TodoStore["removeTodo"],updateTodo:TodoStore["updateTodo"]},ref:any) => {
   const {id,title,completed} = todo;
   return (
-    <article {...props} ref={ref} className="flex gap-4 border-b border-b-gray-400 dark:bg-gray-800">
+    <article {...props} ref={ref} className={` flex gap-4 border-b border-b-gray-400 dark:bg-gray-800 transition-[background-color] duration-1000 bg-white `}>
         <button
         onClick={() => updateTodo(id)}
         className={`rounded-full border-2 h-5 w-5 flex-none 

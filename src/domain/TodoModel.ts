@@ -19,13 +19,17 @@ const updateTodo = (todos:TodoEntity[], id:TodoEntity["id"]) =>
 const getTodo = (todos:TodoEntity[],name:FilterEntity['name']) => {
     if(name === "active")
         return todos.filter((todo)=> !todo.completed);
-    if(name === "completed")
+    if(name === 'completed')
         return todos.filter((todo)=> todo.completed);
     return todos;
 } 
 
 // It can count numbers completed todo
-const countCompletedTodo = (todos:TodoEntity[]) => todos.filter((todo) => !todo.completed).length;
+const countCompletedTodo = (todos:TodoEntity[], name:FilterEntity['name']) => {
+    if(name === 'completed')
+        return todos.filter((todo) => todo.completed).length;
+    return todos.filter((todo) => !todo.completed).length;
+}
 
 // It can clear all the completed todo 
 const clearCompletedTodo = (todos:TodoEntity[]) => todos.filter((todo) => !todo.completed);

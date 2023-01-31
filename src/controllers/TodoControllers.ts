@@ -31,7 +31,7 @@ export default function TodoControllers(){
         setTodos(new clearCompletedTodoUserCase(todos).clearCompletedTodo());
     }
     function countCompletedTodo(){
-        return new countCompletedTodoUserCase(todos).countCompletedTodo()
+        return new countCompletedTodoUserCase(todos,filter).countCompletedTodo()
     }
 
     const reorder = (list:TodoEntity[], startIndex:any, endIndex:any) =>{
